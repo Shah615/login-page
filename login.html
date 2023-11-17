@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .login-container {
+      margin-top: 100px;
+    }
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      background-color: #007bff;
+      color: white;
+      border-radius: 10px 10px 0 0;
+    }
+    .custom-btn {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container login-container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center py-3">Login</h2>
+          </div>
+          <div class="card-body">
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username">
+                <small class="text-danger" id="usernameError"></small>
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password">
+                <small class="text-danger" id="passwordError"></small>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block custom-btn">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#loginForm').submit(function(event) {
+        event.preventDefault();
+        validateForm();
+      });
+    });
+
+    function validateForm() {
+      const username = $('#username').val();
+      const password = $('#password').val();
+      let valid = true;
+
+      if (username.trim() === '') {
+        $('#usernameError').text('Username is required');
+        valid = false;
+      } else {
+        $('#usernameError').text('');
+      }
+
+      if (password.trim() === '') {
+        $('#passwordError').text('Password is required');
+        valid = false;
+      } else {
+        $('#passwordError').text('');
+      }
+
+      if (valid) {
+        // Simulate login - you can add your login logic here
+        alert('Login Successful');
+        // Clear form fields after successful login
+        $('#loginForm')[0].reset();
+      }
+    }
+  </script>
+</body>
+</html>
